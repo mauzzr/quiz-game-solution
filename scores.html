@@ -12,12 +12,91 @@
 </head>
 
 <body>
-  <nav class="nav">
-    <a href="index.html" class="nav-link">Quiz</a>
-    <a href="scores.html" class="nav-link active">High Scores</a>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a href="index.html" class="navbar-brand">JavaScript Quiz</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active"><a href="index.html" class="nav-link active">Quiz</a></li>
+        <li class="nav-item"><a href="scores.html" class="nav-link">High Scores</a></li>
+      </ul>
+    </div>
   </nav>
-  <div class="container">
 
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col col-lg-8">
+        <h1 class="p-2">High Scores</h1>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col col-lg-8">
+        <table class="table table-striped" id="scoresTable">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Initials</th>
+              <th scope="col">Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>AAA</td>
+              <td>10</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>AAA</td>
+              <td>10</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>AAA</td>
+              <td>10</td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>AAA</td>
+              <td>10</td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td>AAA</td>
+              <td>10</td>
+            </tr>
+            <tr>
+              <th scope="row">6</th>
+              <td>AAA</td>
+              <td>10</td>
+            </tr>
+            <tr>
+              <th scope="row">7</th>
+              <td>AAA</td>
+              <td>10</td>
+            </tr>
+            <tr>
+              <th scope="row">8</th>
+              <td>AAA</td>
+              <td>10</td>
+            </tr>
+            <tr>
+              <th scope="row">9</th>
+              <td>AAA</td>
+              <td>10</td>
+            </tr>
+            <tr>
+              <th scope="row">10</th>
+              <td>AAA</td>
+              <td>10</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

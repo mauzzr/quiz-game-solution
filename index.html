@@ -12,13 +12,33 @@
 </head>
 
 <body>
-  <nav class="nav">
-    <a href="index.html" class="nav-link active">Quiz</a>
-    <a href="scores.html" class="nav-link">High Scores</a>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a href="index.html" class="navbar-brand">JavaScript Quiz</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active"><a href="index.html" class="nav-link active">Quiz</a></li>
+        <li class="nav-item"><a href="scores.html" class="nav-link">High Scores</a></li>
+      </ul>
+    </div>
   </nav>
-  <div class="container">
 
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div id="quizContent" class="col col-lg-8">
+        <div class="jumbotron">
+          <h1>JavaScript Quiz</h1>
+          <p class="lead">Press "Start Quiz" to begin!</p>
+          <hr class="my-4">
+          <a href="#" id="startQuiz" class="btn btn-primary btn-lg" role="button">Start Quiz!</a>
+        </div>
+      </div>
+    </div>
   </div>
+
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
