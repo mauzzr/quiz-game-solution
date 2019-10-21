@@ -18,6 +18,9 @@ var timerElement = document.getElementById("timer");
 var quizDiv = document.getElementById("quizContent");
 
 function startQuiz(event) {
+    // This places the timer on the page without changing its value
+    updateTimer(timerElement, 0);
+    // If the timer isn't already running, start it
     if (!timerInterval) {
         timerInterval = setInterval(function () {
             updateTimer(timerElement, -1);
@@ -45,8 +48,46 @@ function endQuiz() {
 }
 
 function formSubmitted(event) {
+    var initials = document.getElementById('initialsInput').value;
+    var scores = window.localStorage.getItem('quizScores');
+    var submissionConfirmation = document.createElement('p');
+    var highScoresLink = document.createElement('a');
     event.preventDefault();
-    alert('Form submitted!');
+
+    console.log("SUBMITTING A SCORE");
+    console.log("input element: " + document.getElementById('initialsInput'));
+    console.log("input element value: ", initials);
+    // Either quizScores was found, in which case we need to add to it,
+    //  or it wasn't, in which case we need to create it.
+    if (scores) {
+        scores = JSON.parse(scores);
+        scores.push({name: initials,
+                     score: timeRemaining
+        });
+
+        // This sorts the scores array in order of ascending scores
+        scores.sort((a, b) => { return a.score - b.score });
+        // We want them in descending order to get a "Top 10," so reverse after sorting
+        scores.reverse();
+        // Keep only the top 10 scores
+        scores = scores.slice(0, 10);
+    } else {
+        scores = [
+            {
+                name: initials,
+                score: timeRemaining
+        }];
+    }
+
+    window.localStorage.setItem('quizScores', JSON.stringify(scores));
+
+    submissionConfirmation.textContent = 'Thank you for submitting your score! '
+    highScoresLink.href = 'scores.html';
+    highScoresLink.textContent = 'View High Scores';
+    submissionConfirmation.appendChild(highScoresLink);
+    quizDiv.appendChild(submissionConfirmation);
+    this.removeEventListener('click', formSubmitted);
+    this.addEventListener('click', doNothing);
 }
 
 function updateTimer(timerElement, deltaSeconds) {
@@ -58,7 +99,7 @@ function updateTimer(timerElement, deltaSeconds) {
 function choiceClicked(event) {
     // console.log(this.getAttribute("data-response"));
     if (this.getAttribute("data-response") === questions[currentQuestionIndex].answer) {
-        alert("Correct answer!");
+        // alert("Correct answer!");
         currentQuestionIndex++;
         if (currentQuestionIndex >= questions.length) {
             endQuiz();
@@ -66,7 +107,7 @@ function choiceClicked(event) {
             renderQuestion(currentQuestionIndex);
         }
     } else {
-        alert("Wrong answer!");
+        // alert("Wrong answer!");
         updateTimer(timerElement, -15);
     }
 }
@@ -116,8 +157,6 @@ function makeScoreSubmitForm() {
 
     formGroupDiv.classList.add('form-group');
 
-    inputElement.id = 'initialsInput';
-
     labelElement.setAttribute('for', 'initialsInput');
     labelElement.textContent = 'Initials';
 
@@ -139,6 +178,10 @@ function makeScoreSubmitForm() {
 
     // Return everything in one containing element so that it's easy to append to the document.
     return container;
+}
+
+function doNothing(event) {
+    event.preventDefault();
 }
 
 startQuizButton.addEventListener("click", startQuiz);
