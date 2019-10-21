@@ -13,7 +13,7 @@ var i, tableRowElement, tableHeadElement, initialsElement, scoreElement;
 for (i = 0; i < scores.length; i++) {
     tableRowElement = document.createElement('tr');
 
-    tableHeadElement = document.createElement('thead');
+    tableHeadElement = document.createElement('th');
     tableHeadElement.setAttribute('scope', 'row');
     tableHeadElement.textContent = `${i + 1}`;
     tableRowElement.appendChild(tableHeadElement);
