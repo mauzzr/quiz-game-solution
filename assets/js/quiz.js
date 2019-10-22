@@ -17,6 +17,11 @@ var startQuizButton = document.getElementById("startQuiz");
 var timerElement = document.getElementById("timer");
 var quizDiv = document.getElementById("quizContent");
 
+var correctSound = new Audio('assets/sounds/correct-choice.mp3');
+correctSound.volume = 0.64;
+var wrongSound = new Audio('assets/sounds/wrong-choice.mp3');
+wrongSound.volume = 0.64;
+
 function startQuiz(event) {
     // This places the timer on the page without changing its value
     updateTimer(timerElement, 0);
@@ -100,6 +105,7 @@ function choiceClicked(event) {
     // console.log(this.getAttribute("data-response"));
     if (this.getAttribute("data-response") === questions[currentQuestionIndex].answer) {
         // alert("Correct answer!");
+        correctSound.play();
         currentQuestionIndex++;
         if (currentQuestionIndex >= questions.length) {
             endQuiz();
@@ -108,6 +114,7 @@ function choiceClicked(event) {
         }
     } else {
         // alert("Wrong answer!");
+        wrongSound.play();
         updateTimer(timerElement, -15);
     }
 }
